@@ -16,11 +16,11 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-  res.redirect(`/api/${uuidV4()}`)
+  res.redirect(`/${uuidV4()}`)
 })
 
-app.get('/api/:room', (req, res) => {
-  res.render('/views/room', { roomId: req.params.room })
+app.get('/:room', (req, res) => {
+  res.render('room', { roomId: req.params.room })
 })
 
 io.on('connection', socket => {
