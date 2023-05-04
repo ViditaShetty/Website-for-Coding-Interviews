@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+app.use(express.static(__dirname+'/public'))
 
 // const cors = require('cors')
 // app.use(cors())
@@ -15,12 +16,12 @@ app.use('/peerjs', peerServer);
 
 
 //app.set('view engine', 'ejs')
-app.use(express.static('public'))
 
 app.get('/', (req, res) => {
   //res.redirect(`/${uuidV4()}`)
   res.send("hii");
-  app.use(express.static('public'))
+  app.use(express.static(__dirname+'/public'));
+  //res.render('')
 })
 
 //app.get('/:room', (req, res) => {
