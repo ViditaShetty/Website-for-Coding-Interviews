@@ -17,9 +17,10 @@ app.use('/peerjs', peerServer);
 //app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-//app.get('/', (req, res) => {
+app.get('/', (req, res) => {
   //res.redirect(`/${uuidV4()}`)
-//})
+  res.send("hii");
+})
 
 //app.get('/:room', (req, res) => {
 //  res.render('room', { roomId: req.params.room })
