@@ -12,7 +12,7 @@ const { v4: uuidV4 } = require('uuid')
 
 app.use('/peerjs', peerServer);
 
-//app.set('view engine', 'ejs')
+app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
@@ -20,8 +20,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/:room', (req, res) => {
-  //res.render('room', { roomId: req.params.room })
-  app.use(express.static('/room'));
+  res.render('room', { roomId: req.params.room })
 })
 
 io.on('connection', socket => {
