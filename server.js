@@ -1,5 +1,7 @@
 const express = require('express')
 const app = express()
+const path = require('path')
+
 // const cors = require('cors')
 // app.use(cors())
 const server = require('http').Server(app)
@@ -12,6 +14,7 @@ const { v4: uuidV4 } = require('uuid')
 
 app.use('/peerjs', peerServer);
 
+app.set("views", express.static(path.join((__dirname, "views"))));
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
