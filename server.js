@@ -14,7 +14,6 @@ const { v4: uuidV4 } = require('uuid')
 app.use('/peerjs', peerServer);
 
 
-
 //app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
