@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-app.use(express.static(__dirname+'/public'))
+app.use(express.static(__dirname+'/public')) //**********************CONVERT EJS TO HTML AND USE DIRNAME */
 
 // const cors = require('cors')
 // app.use(cors())

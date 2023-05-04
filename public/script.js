@@ -5,6 +5,9 @@ const myPeer = new Peer(undefined, {
   host: '/',
   port: '3030'
 })
+
+
+
 let myVideoStream;
 const myVideo = document.createElement('video')
 myVideo.muted = true;
