@@ -1,3 +1,4 @@
+const { Console } = require('console');
 const express = require('express')
 const app = express()
 
@@ -41,4 +42,5 @@ io.on('connection', socket => {
   })
 })
 
-server.listen(3030)
+server.listen(3030||process.env.PORT)
+      
