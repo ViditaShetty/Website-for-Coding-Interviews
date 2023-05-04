@@ -16,16 +16,16 @@ app.use('/peerjs', peerServer);
 
 //var __dirname="./";
 //app.set("views", express.static(path.join((__dirname, "views"))));
-app.set('view engine', 'ejs')
+//app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
   res.redirect(`/${uuidV4()}`)
 })
 
-app.get('/:room', (req, res) => {
-  res.render('room', { roomId: req.params.room })
-})
+//app.get('/:room', (req, res) => {
+//  res.render('room', { roomId: req.params.room })
+//})
 
 io.on('connection', socket => {
   socket.on('join-room', (roomId, userId) => {
