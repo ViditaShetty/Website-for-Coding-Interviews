@@ -137,7 +137,7 @@ app.post('/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
           console.log(tempDir) 
           require('fs').writeFileSync(tempDir+"/codec.py",code);
           require('fs').writeFileSync(tempDir+"/input.txt",input);
-          var exec="python3 "+tempDir+"/codec.py < "+tempDir+"/input.txt > "+tempDir+"/outputp.txt";
+          var exec="python3 "+"temp/codec.py < "+"temp/input.txt > "+"temp/outputp.txt";
           console.log(exec);
           execSync(exec);
          
