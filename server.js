@@ -131,20 +131,20 @@ app.post('/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
      
       break;
       case "Python 3":
-          require('fs').writeFileSync(__dirname+"/tmp/codec.py",code);
-          require('fs').writeFileSync(__dirname+"/tmp/input.txt",input);
+          require('fs').writeFileSync(__dirname+"/codec.py",code);
+          require('fs').writeFileSync(__dirname+"/input.txt",input);
           execSync("python3 codec.py < input.txt > outputp.txt");
          
           ///ADDED THESE 2 LINES****************** 
-          var output = require('fs').readFileSync(__dirname+"/tmp/outputp.txt",'utf-8');
+          var output = require('fs').readFileSync(__dirname+"/outputp.txt",'utf-8');
           res.send(output);
           
-          var error= require('fs').readFileSync(__dirname+"/tmp/error.txt",'utf-8');
+          var error= require('fs').readFileSync(__dirname+"/error.txt",'utf-8');
           require('fs').writeFileSync(__dirname+"/tmp/error.txt","");
   
           if(error=="")
           {
-             var output = require('fs').readFileSync(__dirname+"/tmp/outputp.txt",'utf-8');
+             var output = require('fs').readFileSync(__dirname+"/outputp.txt",'utf-8');
              res.send();
            }
            else
