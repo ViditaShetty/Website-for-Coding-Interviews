@@ -59,7 +59,8 @@ io.on('connection', socket => {
 //ADED THIS FOR IDE########################
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.post('/res', function(req, res){
+console.log(__dirname+'/res');
+app.post(__dirname+'/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
   var code = req.body.code;
   //console.log("code*************************",code);
   var lang= req.body.lang;
