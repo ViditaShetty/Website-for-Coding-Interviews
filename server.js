@@ -138,9 +138,6 @@ app.post('/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
           console.log(tempDir) 
           require('fs').writeFileSync(tempDir+"/codec.py",code);
           require('fs').writeFileSync(tempDir+"/input.txt",input);
-          var NPMI="npm install python3";
-          console.log(NPMI);
-          execSync(NPMI);          
           var exec="python3 /tmp/codec.py < /tmp/input.txt > /tmp/outputp.txt";
           console.log(exec);
           execSync(exec);
