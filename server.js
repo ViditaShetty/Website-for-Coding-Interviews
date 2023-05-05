@@ -133,7 +133,7 @@ app.post('/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
       case "Python 3":
         //added in prohect seeting cd /tmp   npm install ptyhon3****************
           execSync("cd ..");
-          execSync("npm install ptyhon3");
+          execSync("npm install python3");
           const os = require("os");
           // get temp directory
           const tempDir = os.tmpdir();
