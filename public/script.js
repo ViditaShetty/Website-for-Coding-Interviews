@@ -137,5 +137,5 @@ const setPlayVideo = () => {
 }
 
 const goToIde=()=>{
-  window.location.href = "./ide/ui/ide.html";
+  window.location.href = "./ide/editor.html";
 }

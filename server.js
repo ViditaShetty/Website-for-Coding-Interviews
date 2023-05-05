@@ -1,4 +1,15 @@
 const express = require('express')
+
+//ADED THIS FOR IDE########################
+var http = require('http')
+var bodyParser= require('body-parser');
+var fs,fs1= require('fs');
+var path = require('path');
+var cmd = require('node-cmd');
+const execSync = require('child_process').execSync;
+//titt here
+
+
 const app = express()
 app.use(express.static(__dirname+'/public')) //**********************CONVERT EJS TO HTML AND USE DIRNAME */
 
@@ -45,5 +56,98 @@ io.on('connection', socket => {
   })
 })
 
+//ADED THIS FOR IDE########################
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.post('/res', function(req, res){
+  var code = req.body.code;
+  //console.log("code*************************",code);
+  var lang= req.body.lang;
+  var input = req.body.input;
+  switch(lang)
+  {
+      case "C++" : 
+         
+         require('fs').writeFileSync(__dirname+"/code.cpp",code);
+          require('fs').writeFileSync(__dirname+"/input.txt",input);
+          execSync("g++ code.cpp -o code.exe &> err.txt");
+          var error= require('fs').readFileSync(__dirname+"/error.txt",'utf-8');
+          require('fs').writeFileSync(__dirname+"/error.txt","");
+          if(error=="")
+          {
+          execSync("./code.exe < input.txt > output.txt");
+             var output = require('fs').readFileSync(__dirname+"/output.txt",'utf-8');
+           res.send(output);
+           }
+           else
+           {
+             res.send(error);
+           }           
+      break;
+      case "C":
+         require('fs').writeFileSync(__dirname+"/code.c",code);
+          require('fs').writeFileSync(__dirname+"/input.txt",input);
+          execSync("gcc code.c -o code.exe &> err.txt");
+          var error= require('fs').readFileSync(__dirname+"/error.txt",'utf-8');
+          require('fs').writeFileSync(__dirname+"/error.txt","");
+          if(error=="")
+          {
+          execSync("./code.exe < input.txt > output.txt");
+             var output = require('fs').readFileSync(__dirname+"/output.txt",'utf-8');
+           res.send(output);
+           }
+           else
+           {
+             res.send(error);
+           }            
+         
+      break;
+      case "Python 2":
+        require('fs').writeFileSync(__dirname+"/codec.py",code);
+          require('fs').writeFileSync(__dirname+"/input.txt",input);
+          execSync("python codec.py &> err.txt < input.txt > output.txt");
+          
+          
+             var error= require('fs').readFileSync(__dirname+"/error.txt",'utf-8');
+          require('fs').writeFileSync(__dirname+"/error.txt","");
+          if(error=="")
+          {
+          
+             var output = require('fs').readFileSync(__dirname+"/output.txt",'utf-8');
+           res.send(output);
+           }
+           else
+           {
+             res.send(error);
+           }          
+         
+     
+      break;
+      case "Python 3":
+          require('fs').writeFileSync(__dirname+"/codec.py",code);
+          require('fs').writeFileSync(__dirname+"/input.txt",input);
+          execSync("python3 codec.py < input.txt > outputp.txt");
+         
+          ///ADDED THESE 2 LINES****************** 
+          var output = require('fs').readFileSync(__dirname+"/outputp.txt",'utf-8');
+          res.send(output);
+          
+             var error= require('fs').readFileSync(__dirname+"/error.txt",'utf-8');
+          require('fs').writeFileSync(__dirname+"/error.txt","");
+  
+          if(error=="")
+          {
+          
+             var output = require('fs').readFileSync(__dirname+"/outputp.txt",'utf-8');
+           res.send(output);
+           }
+           else
+           {
+             res.send(error);
+           }      
+      break;
+  }
+   });
+//TILL HERE#######################################################
 server.listen(3030||process.env.PORT)
       
