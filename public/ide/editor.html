@@ -163,7 +163,7 @@ window.onload = function() {
 
     $("#btn").click(function(){
     	console.log($("#code").val());
-    	$.post("/res",
+    	$.post(__dirname+"/res",
         {
           code : editor.getValue(),
           lang : $("#lang").val(),
