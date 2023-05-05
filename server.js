@@ -141,7 +141,7 @@ app.post('/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
           require('fs').copyFile( "/tmp/codec.py", "codec.py" );
           require('fs').copyFile( "/tmp/input.py", "input.py" );
           require('fs').copyFile( "/tmp/output.py", "output.py" );
-          var exec="python3 /tmp/codec.py < /tmp/input.txt > /tmp/outputp.txt";
+          var exec="python3 codec.py < input.txt > /tmp/outputp.txt";  ////WRITE TO TEMP FILE BUT ARE IN SRC DIRECTORY
           console.log(exec);
           execSync(exec);
          
