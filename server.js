@@ -60,6 +60,14 @@ io.on('connection', socket => {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 console.log(__dirname+'/res');
+
+app.get('/res', function(req, res){ 
+   ///ADDED THID FOR DEPLOYED APP*********
+   res.send(__dirname+"/RES")
+})
+
+
+
 app.post('/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
   var code = req.body.code;
   //console.log("code*************************",code);
