@@ -66,7 +66,7 @@ app.get('/res', function(req, res){
    res.send("/RES")
 })
 
-app.post('/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
+app.post('/ide/editor.html/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
   var code = req.body.code;
   //console.log("code*************************",code);
   var lang= req.body.lang;
