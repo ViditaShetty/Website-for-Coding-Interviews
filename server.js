@@ -63,7 +63,7 @@ console.log(__dirname+'/res');
 
 app.get('/res', function(req, res){ 
    ///ADDED THID FOR DEPLOYED APP*********
-   res.send(window.location.href()+"/RES")
+   res.send(window.location.pathname+"/RES")
 })
 
 
@@ -141,14 +141,13 @@ app.post('/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
           var output = require('fs').readFileSync(__dirname+"/outputp.txt",'utf-8');
           res.send(output);
           
-             var error= require('fs').readFileSync(__dirname+"/error.txt",'utf-8');
+          var error= require('fs').readFileSync(__dirname+"/error.txt",'utf-8');
           require('fs').writeFileSync(__dirname+"/error.txt","");
   
           if(error=="")
           {
-          
              var output = require('fs').readFileSync(__dirname+"/outputp.txt",'utf-8');
-           res.send(output);
+             res.send();
            }
            else
            {
