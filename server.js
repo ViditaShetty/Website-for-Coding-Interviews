@@ -131,30 +131,29 @@ app.post('/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
      
       break;
       case "Python 3":
-         // require('fs').writeFileSync(__dirname+"/codec.py",code);//remvesd this&&&&&&&&&&&&&&&&&
-         localStorage.setItem("codec.py",code);
-         // require('fs').writeFileSync(__dirname+"/input.txt",input);
-         localStorage.setItem("input.txt",input);
-
-          execSync("python3 codec.py < input.txt > outputp.txt");
+        const os = require("os");
+          // get temp directory
+          const tempDir = os.tmpdir();
+          console.log(tempDir) 
+          require('fs').writeFileSync(tempDir+"/codec.py",code);
+          require('fs').writeFileSync(tempDir+"/input.txt",input);
+          var exec="python3 "+tempDir+"/codec.py < "+tempDir+"/input.txt > "+tempDir+"/outputp.txt";
+          console.log(exec);
+          execSync(exec);
          
           ///ADDED THESE 2 LINES****************** 
-          //var output = require('fs').readFileSync(__dirname+"/outputp.txt",'utf-8');//remvesd this&&&&&&&&&&&&&&&&&
-          var output=localStorage.getItem("outputp.txt",'utf-8');
-
+          var output = require('fs').readFileSync(tempDir+"/outputp.txt",'utf-8');
+          console.log("read",output);
           res.send(output);
           
-         // var error= require('fs').readFileSync(__dirname+"/error.txt",'utf-8');//remvesd this&&&&&&&&&&&&&&&&&
-          var error=localStorage.getItem("error.txt",'utf-8');
+          //require('fs').writeFileSync(tempDir+"/tmp/error.txt","");
+          //var error= require('fs').readFileSync(tempDir+"/error.txt",'utf-8');
+          var error="";
 
-          //require('fs').writeFileSync(__dirname+"/error.txt","");
-          localStorage.setItem("error.txt","");
 
-  
           if(error=="")
           {
-             //var output = require('fs').readFileSync(__dirname+"/outputp.txt",'utf-8');//remvesd this&&&&&&&&&&&&&&&&&
-              var output=localStorage.getItem("outputp.txt",'utf-8');
+             var output = require('fs').readFileSync(tempDir+"/outputp.txt",'utf-8');
              res.send();
            }
            else
