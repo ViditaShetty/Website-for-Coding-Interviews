@@ -131,15 +131,16 @@ app.post('/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
      
       break;
       case "Python 3":
-         // get temp directory
+         // get temp directory    
+        //added in prohect seeting cd /tmp   npm install ptyhon3****************
           const os = require("os");
           const tempDir = os.tmpdir();
-        //added in prohect seeting cd /tmp   npm install ptyhon3****************
-          execSync("cd "+tempDir);
-          execSync("npm install python3");
           console.log(tempDir) 
           require('fs').writeFileSync(tempDir+"/codec.py",code);
           require('fs').writeFileSync(tempDir+"/input.txt",input);
+          var NPMI="npm install python3";
+          console.log(NPMI);
+          execSync(NPMI);          
           var exec="python3 /tmp/codec.py < /tmp/input.txt > /tmp/outputp.txt";
           console.log(exec);
           execSync(exec);
