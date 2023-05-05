@@ -63,10 +63,8 @@ console.log(__dirname+'/res');
 
 app.get('/res', function(req, res){ 
    ///ADDED THID FOR DEPLOYED APP*********
-   res.send(window.location.pathname+"/RES")
+   res.send("/RES")
 })
-
-
 
 app.post('/res', function(req, res){  ///ADDED THID FOR DEPLOYED APP*********
   var code = req.body.code;

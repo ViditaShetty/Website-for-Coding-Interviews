@@ -163,7 +163,7 @@ window.onload = function() {
 
     $("#btn").click(function(){
     	console.log($("#code").val());
-    	$.post("https://medishield.vercel.app/res",//ADDED THIS FOR DEPLOYED APP**************
+    	$.post("/res",//ADDED THIS FOR DEPLOYED APP**************
         {
           code : editor.getValue(),
           lang : $("#lang").val(),
