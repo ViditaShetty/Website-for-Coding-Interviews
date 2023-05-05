@@ -63,7 +63,7 @@ console.log(__dirname+'/res');
 
 app.get('/res', function(req, res){ 
    ///ADDED THID FOR DEPLOYED APP*********
-   res.send(__dirname+"/RES")
+   res.send(window.location.href()+"/RES")
 })
 
 
