@@ -135,3 +135,7 @@ const setPlayVideo = () => {
   `
   document.querySelector('.main__video_button').innerHTML = html;
 }
+
+const goToIde=()=>{
+  window.location.href = "./ide/ui/ide.html";
+}

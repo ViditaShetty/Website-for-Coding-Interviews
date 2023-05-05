@@ -23,7 +23,6 @@ app.get('/', (req, res) => {
   //res.redirect(`/${uuidV4()}`)
   res.send("hii");
   app.use(express.static(__dirname+'/public'));
-  //res.render('')
 })
 
 //app.get('/:room', (req, res) => {
